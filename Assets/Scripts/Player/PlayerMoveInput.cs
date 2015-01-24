@@ -2,11 +2,15 @@
 using System.Collections;
 using InControl;
 
+
+[RequireComponent(typeof(AudioSource))]
 public class PlayerMoveInput : MonoBehaviour
 {
 
 		public int speed = 10;
 		private Vector3 direciton;
+		
+		public AudioClip steps;
 		
 		private CharacterController characterController;
 
@@ -33,6 +37,8 @@ public class PlayerMoveInput : MonoBehaviour
 						directionLength = directionLength * directionLength;
 			
 						directionVector = directionVector * directionLength;
+						
+						audio.Play ();
 				}
 		
 				direciton = transform.rotation * directionVector;
