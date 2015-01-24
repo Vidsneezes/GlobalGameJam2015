@@ -25,7 +25,7 @@ public class PlayerLookInput : MonoBehaviour
 	
 		public bool canRotate;
 		
-		private int inverted = 1;
+		private int inverted = -1;
 	
 		void Update ()
 		{
