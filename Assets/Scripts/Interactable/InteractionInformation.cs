@@ -10,6 +10,7 @@ public class InformationElement
 		public float fireRate;
 		public float sanityLower;
 		public bool foldout;
+		public List<GameObject> instances;
 		
 		public InformationElement ()
 		{
@@ -44,6 +45,9 @@ public class InteractionInformation : MonoBehaviour , IInteractable
 						for (int i = 0; i < informationElements.Count; i++) {
 								if (informationElements [i].sanityLower <= playerInteraction.sanity) {
 										temp.DisplayMessage (informationElements [i].message);
+										for (int j = 0; j < informationElements[i].instances.Count; j++) {
+												Instantiate (informationElements [i].instances [i], transform.position, Quaternion.identity);
+										}
 										Invoke ("canViewMessageAgain", informationElements [i].fireRate);
 										break;
 								}

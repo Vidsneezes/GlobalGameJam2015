@@ -25,6 +25,26 @@ public class InteractionInformationExtension :  Editor
 												inform.informationElements [i].message = EditorGUILayout.TextField ("Message", inform.informationElements [i].message);
 												inform.informationElements [i].sanityLower = EditorGUILayout.FloatField ("When Sanity is Lower Than", inform.informationElements [i].sanityLower);
 												inform.informationElements [i].fireRate = EditorGUILayout.FloatField ("FireRate", inform.informationElements [i].fireRate);
+						
+												
+												
+												if (inform.informationElements [i].instances != null) {
+														for (int j = 0; j < inform.informationElements[i].instances.Count; j++) {
+																inform.informationElements [i].instances [j] = (GameObject)EditorGUILayout.ObjectField ("Prefab " + j, inform.informationElements [i].instances [i], typeof(GameObject), false);
+														}
+												}
+												
+												if (GUILayout.Button ("Add Instances Interaction")) {
+														if (inform.informationElements [i].instances == null) {
+																inform.informationElements [i].instances = new List<GameObject> ();
+								
+														}
+														inform.informationElements [i].instances.Add (null);
+												}
+												
+												if (GUILayout.Button ("Remove Instances Interaction") && inform.informationElements [i].instances.Count > 0) {
+														inform.informationElements [i].instances.RemoveAt (inform.informationElements [i].instances.Count - 1);
+												}
 										}
 								}
 						}
