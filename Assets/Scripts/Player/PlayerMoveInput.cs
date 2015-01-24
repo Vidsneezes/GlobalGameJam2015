@@ -13,11 +13,14 @@ public class PlayerMoveInput : MonoBehaviour
 		public AudioClip steps;
 		
 		private CharacterController characterController;
+		
+		
 
 		// Use this for initialization
 		void Start ()
 		{
 				characterController = GetComponent<CharacterController> ();
+				
 		}
 	
 		// Update is called once per frame
@@ -38,7 +41,13 @@ public class PlayerMoveInput : MonoBehaviour
 			
 						directionVector = directionVector * directionLength;
 						
-						audio.Play ();
+						if (!audio.isPlaying) {
+								audio.Play ();
+						}
+				}
+				
+				if (directionVector == Vector3.zero) {
+						audio.Stop ();
 				}
 		
 				direciton = transform.rotation * directionVector;

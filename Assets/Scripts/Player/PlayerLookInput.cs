@@ -24,16 +24,22 @@ public class PlayerLookInput : MonoBehaviour
 		float rotationY = 0F;
 	
 		public bool canRotate;
+		
+		private int inverted = 1;
 	
 		void Update ()
 		{
 				var inputeDevice = InputManager.ActiveDevice;
+				
+				if (inputeDevice.LeftBumper) {
+						inverted *= -1;
+				}
 		
 				if (canRotate == true) {
 						if (axes == RotationAxes.MouseXAndY) {
 								float rotationX = transform.localEulerAngles.y + inputeDevice.RightStickX * sensitivityX;
 				
-								rotationY += (-inputeDevice.RightStickY) * sensitivityY;
+								rotationY += (inverted * inputeDevice.RightStickY) * sensitivityY;
 								rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
 				
 								transform.localEulerAngles = new Vector3 (-rotationY, rotationX, 0);
