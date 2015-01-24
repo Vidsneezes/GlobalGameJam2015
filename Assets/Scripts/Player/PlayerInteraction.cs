@@ -11,6 +11,8 @@ public class PlayerInteraction : MonoBehaviour
 				
 		private GameObject targetDistance;
 		
+		private GameObject cameraPosition;
+		
 		public int interactionDistance;
 
 		// Use this for initialization
@@ -18,6 +20,7 @@ public class PlayerInteraction : MonoBehaviour
 		{
 		
 				targetDistance = GameObject.Find ("TargetDistance");
+				cameraPosition = GameObject.Find ("Main Camera");
 			
 		}
 	
@@ -27,9 +30,9 @@ public class PlayerInteraction : MonoBehaviour
 				var inputeDevice = InputManager.ActiveDevice;
 				
 				if (inputeDevice.Action1 && targetDistance != null) {
-						Debug.DrawLine (transform.position, targetDistance.transform.position);
+						Debug.DrawLine (cameraPosition.transform.position, targetDistance.transform.position, Color.blue, interactionDistance);
 						RaycastHit info = new RaycastHit ();
-						if (Physics.Raycast (transform.position, targetDistance.transform.position, out info, interactionDistance)) {
+						if (Physics.Linecast (cameraPosition.transform.position, targetDistance.transform.position, out info, interactionDistance)) {
 								ChangeColor temp = info.collider.gameObject.GetComponent<ChangeColor> ();
 								if (temp != null) {
 										temp.Activated ();
