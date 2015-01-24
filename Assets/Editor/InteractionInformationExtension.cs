@@ -10,13 +10,16 @@ public class InteractionInformationExtension :  Editor
 
 		bool informationElementFoldeout;
 
+		Vector2 scrollPosition;
+
 		public override void OnInspectorGUI ()
 		{
 		
 				InteractionInformation inform = (InteractionInformation)target;
 				DrawDefaultInspector ();
-				
 				informationElementFoldeout = EditorGUILayout.Foldout (informationElementFoldeout, "Information Elements");
+				
+				
 				if (informationElementFoldeout) {
 						if (inform.informationElements != null) {
 								for (int i = 0; i < inform.informationElements.Count; i++) {
@@ -30,7 +33,7 @@ public class InteractionInformationExtension :  Editor
 												
 												if (inform.informationElements [i].instances != null) {
 														for (int j = 0; j < inform.informationElements[i].instances.Count; j++) {
-																inform.informationElements [i].instances [j] = (GameObject)EditorGUILayout.ObjectField ("Prefab " + j, inform.informationElements [i].instances [i], typeof(GameObject), false);
+																inform.informationElements [i].instances [j] = (GameObject)EditorGUILayout.ObjectField ("Prefab " + j, inform.informationElements [i].instances [j], typeof(GameObject), false);
 														}
 												}
 												
@@ -48,6 +51,7 @@ public class InteractionInformationExtension :  Editor
 										}
 								}
 						}
+						
 				}
 				
 				if (GUILayout.Button ("Add Interaction")) {
@@ -55,6 +59,10 @@ public class InteractionInformationExtension :  Editor
 								inform.informationElements = new List<InformationElement> ();
 						}
 						inform.informationElements.Add (new InformationElement ());
+				}
+				
+				if (GUILayout.Button ("Clear List")) {
+						inform.informationElements.Clear ();
 				}
 				
 		}
