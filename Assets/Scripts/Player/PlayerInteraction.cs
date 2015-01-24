@@ -33,7 +33,7 @@ public class PlayerInteraction : MonoBehaviour
 						Debug.DrawLine (cameraPosition.transform.position, targetDistance.transform.position, Color.blue, interactionDistance);
 						RaycastHit info = new RaycastHit ();
 						if (Physics.Linecast (cameraPosition.transform.position, targetDistance.transform.position, out info, interactionDistance)) {
-								ChangeColor temp = info.collider.gameObject.GetComponent<ChangeColor> ();
+								InteractionInformation temp = info.collider.gameObject.GetComponent<InteractionInformation> ();
 								if (temp != null) {
 										temp.Activated ();
 								}
