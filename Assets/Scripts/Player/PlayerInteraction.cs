@@ -29,7 +29,7 @@ public class PlayerInteraction : MonoBehaviour
 		
 		void EnableInteraction ()
 		{
-		
+				justInteracted = false;
 		}
 	
 		// Update is called once per frame
