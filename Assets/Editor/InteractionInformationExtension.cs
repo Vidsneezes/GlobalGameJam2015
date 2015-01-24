@@ -50,6 +50,7 @@ public class InteractionInformationExtension :  Editor
 												}
 												
 												inform.informationElements [i].material = (Material)EditorGUILayout.ObjectField ("Material", inform.informationElements [i].material, typeof(Material), false);
+												inform.informationElements [i].effect = (AudioClip)EditorGUILayout.ObjectField ("Audio Clip", inform.informationElements [i].effect, typeof(AudioClip), false);
 												
 										}
 								}

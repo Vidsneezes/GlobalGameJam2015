@@ -12,6 +12,7 @@ public class InformationElement
 		public bool foldout;
 		public List<GameObject> instances;
 		public Material material;
+		public AudioClip effect;
 		
 		public InformationElement ()
 		{
@@ -22,6 +23,7 @@ public class InformationElement
 		}
 }
 
+[RequireComponent(typeof(AudioSource))]
 public class InteractionInformation : MonoBehaviour , IInteractable
 {
 
@@ -32,9 +34,13 @@ public class InteractionInformation : MonoBehaviour , IInteractable
 		
 		private PlayerInteraction playerInteraction;
 		
+		
+		
+		
 		void Start ()
 		{
 				playerInteraction = GameObject.Find ("MainPlayer").GetComponent<PlayerInteraction> ();
+			
 		}
 		
 		public void Activated ()
@@ -43,6 +49,9 @@ public class InteractionInformation : MonoBehaviour , IInteractable
 						messageDisplayed = true;
 						GameObject prompter = GameObject.Find ("MessagePrompter");
 						MessageInformer temp = prompter.GetComponent<MessageInformer> ();
+						
+						Debug.Log ("Test");
+			
 						for (int i = 0; i < informationElements.Count; i++) {
 								if (informationElements [i].sanityLower <= playerInteraction.sanity) {
 										temp.DisplayMessage (informationElements [i].message);
@@ -52,7 +61,11 @@ public class InteractionInformation : MonoBehaviour , IInteractable
 										if (informationElements [i].material != null) {
 												renderer.material = informationElements [i].material;
 										}
+										if (informationElements [i].effect != null) {
+												audio.PlayOneShot (informationElements [i].effect, 1f);
+										}
 										Invoke ("canViewMessageAgain", informationElements [i].fireRate);
+										
 										break;
 								}
 						}
