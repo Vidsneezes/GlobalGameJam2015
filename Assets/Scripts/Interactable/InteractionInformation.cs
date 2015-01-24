@@ -28,15 +28,25 @@ public class InteractionInformation : MonoBehaviour , IInteractable
 				informationElements;
 		private bool messageDisplayed;
 		
+		private PlayerInteraction playerInteraction;
+		
+		void Start ()
+		{
+				playerInteraction = GameObject.Find ("MainPlayer").GetComponent<PlayerInteraction> ();
+		}
+		
 		public void Activated ()
 		{
 				if (messageDisplayed == false) {
 						messageDisplayed = true;
 						GameObject prompter = GameObject.Find ("MessagePrompter");
 						MessageInformer temp = prompter.GetComponent<MessageInformer> ();
-						if (informationElements != null && informationElements.Count > 0) {
-								temp.DisplayMessage (informationElements [0].message);
-								Invoke ("canViewMessageAgain", informationElements [0].fireRate);
+						for (int i = 0; i < informationElements.Count; i++) {
+								if (informationElements [i].sanityLower <= playerInteraction.sanity) {
+										temp.DisplayMessage (informationElements [i].message);
+										Invoke ("canViewMessageAgain", informationElements [i].fireRate);
+										break;
+								}
 						}
 				}
 		}
