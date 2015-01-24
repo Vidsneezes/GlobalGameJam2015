@@ -1,15 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class InformationElement
 {
 
 		public string message;
 		public float fireRate;
+		public float sanityLower;
 		
 		public InformationElement ()
 		{
-	
+				message = "";
+				fireRate = 0;
+				sanityLower = 0;
 		}
 }
 
@@ -17,7 +21,7 @@ public class InformationElement
 public class InteractionInformation : MonoBehaviour , IInteractable
 {
 
-		public InformationElement informationElement;
+		public List<InformationElement> informationElements;
 		private bool messageDisplayed;
 		
 		public void Activated ()
@@ -26,8 +30,7 @@ public class InteractionInformation : MonoBehaviour , IInteractable
 						messageDisplayed = true;
 						GameObject prompter = GameObject.Find ("MessagePrompter");
 						MessageInformer temp = prompter.GetComponent<MessageInformer> ();
-						temp.DisplayMessage (informationElement.message);
-						Invoke ("canViewMessageAgain", informationElement.fireRate);
+					
 				}
 		}
 		
