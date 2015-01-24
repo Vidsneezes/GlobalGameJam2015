@@ -48,6 +48,9 @@ public class InteractionInformationExtension :  Editor
 												if (GUILayout.Button ("Remove Instances Interaction") && inform.informationElements [i].instances.Count > 0) {
 														inform.informationElements [i].instances.RemoveAt (inform.informationElements [i].instances.Count - 1);
 												}
+												
+												inform.informationElements [i].material = (Material)EditorGUILayout.ObjectField ("Material", inform.informationElements [i].material, typeof(Material), false);
+												
 										}
 								}
 						}
