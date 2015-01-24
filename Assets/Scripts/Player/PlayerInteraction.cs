@@ -29,7 +29,7 @@ public class PlayerInteraction : MonoBehaviour
 		{
 				var inputeDevice = InputManager.ActiveDevice;
 				
-				if (inputeDevice.Action1 && targetDistance != null) {
+				if ((inputeDevice.Action1 || inputeDevice.RightTrigger) && targetDistance != null) {
 						Debug.DrawLine (cameraPosition.transform.position, targetDistance.transform.position, Color.blue, interactionDistance);
 						RaycastHit info = new RaycastHit ();
 						if (Physics.Linecast (cameraPosition.transform.position, targetDistance.transform.position, out info, interactionDistance)) {
