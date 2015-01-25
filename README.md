@@ -14,3 +14,7 @@ Sounds URL (CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication):
  - https://www.freesound.org/people/MentalSanityOff/sounds/218306/
  - https://www.freesound.org/people/sagetyrtle/sounds/102211/
  - https://www.freesound.org/people/MentalSanityOff/sounds/218309/
+ - https://www.freesound.org/people/Reitanna/sounds/232472/
+ - https://www.freesound.org/people/jadend2/sounds/205082/
+ - https://www.freesound.org/people/jadend2/sounds/205082/
+ - https://www.freesound.org/people/Crater%20RF/sounds/183447/
