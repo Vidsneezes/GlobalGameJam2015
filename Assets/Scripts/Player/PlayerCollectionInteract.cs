@@ -20,7 +20,8 @@ public class PlayerCollectionInteract : MonoBehaviour
 		public float interactionWait;
 		public bool justInteracted;
 		
-		public GameObject alarmClock;
+		private GameObject alarmClock;
+		
 		
 		
 	
@@ -30,6 +31,7 @@ public class PlayerCollectionInteract : MonoBehaviour
 		
 				targetDistance = GameObject.Find ("TargetDistance");
 				cameraPosition = GameObject.Find ("Main Camera");
+				
 				
 		
 		}
