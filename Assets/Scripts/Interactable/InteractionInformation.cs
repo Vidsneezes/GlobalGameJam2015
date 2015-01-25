@@ -34,6 +34,8 @@ public class InteractionInformation : MonoBehaviour , IInteractable
 		
 		private PlayerInteraction playerInteraction;
 		
+		public int health = -1;
+		
 		
 		
 		
@@ -61,6 +63,9 @@ public class InteractionInformation : MonoBehaviour , IInteractable
 										if (informationElements [i].material != null) {
 												renderer.material = informationElements [i].material;
 										}
+										if (health > 0) {
+												health -= 1;
+										}
 										if (informationElements [i].effect != null) {
 												audio.PlayOneShot (informationElements [i].effect, 1f);
 										}
@@ -68,6 +73,10 @@ public class InteractionInformation : MonoBehaviour , IInteractable
 										
 										break;
 								}
+						}
+						
+						if (health == 0) {
+								Destroy (gameObject);
 						}
 				}
 		}
